@@ -1,96 +1,16 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Интернет Магазин: Все Категории</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/starter-template.css" rel="stylesheet">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="http://internet-shop.tmweb.ru">Интернет Магазин</a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a class="nav-link" href="http://internet-shop.tmweb.ru">Все товары</a></li>
-          <li class="nav-item active"><a class="nav-link" href="http://internet-shop.tmweb.ru/categories">Категории</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="http://internet-shop.tmweb.ru/basket">В корзину</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="http://internet-shop.tmweb.ru/reset">Сбросить проект
-              в начальное состояние</a></li>
-          <li class="nav-item"><a class="nav-link" href="http://internet-shop.tmweb.ru/locale/en">en</a></li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" role="button"
-              aria-haspopup="true" aria-expanded="false">₽<span class="caret"></span></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item"><a class="dropdown-item" href="#">₽</a></li>
-              <li class="dropdown-item"><a class="dropdown-item" href="http://internet-shop.tmweb.ru/currency/USD">$</a>
-              </li>
-              <li class="dropdown-item"><a class="dropdown-item" href="http://internet-shop.tmweb.ru/currency/EUR">€</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="http://internet-shop.tmweb.ru/login">Войти</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="starter-template">
-      @foreach ($categories as $category)
-        <div class="panel">
-          <a href="/{{ $category->code }}">
-            <img src="http://internet-shop.tmweb.ru/storage/categories/mobile.jpg">
-            <h2>{{ $category->name }}</h2>
-          </a>
-          <p>
-           {{ $category->description }}
-          </p>
-        </div>
-      @endforeach
-
-      <div class="panel">
-        <a href="/portable">
-          <img src="http://internet-shop.tmweb.ru/storage/categories/portable.jpg">
-          <h2>Портативная техника</h2>
-        </a>
-        <p>
-          Раздел с портативной техникой.
-        </p>
-      </div>
-      <div class="panel">
-        <a href="/appliances">
-          <img src="http://internet-shop.tmweb.ru/storage/categories/appliance.jpg">
-          <h2>Бытовая техника</h2>
-        </a>
-        <p>
-          Раздел с бытовой техникой
-        </p>
-      </div>
-    </div>
+@extends('master')
+@section('title', 'Все категории')
+@section('content')
+<div class="starter-template">
+  @foreach ($categories as $category)
+  <div class="panel">
+    <a href="{{ route('category', $category->code) }}">
+      <img src="http://internet-shop.tmweb.ru/storage/categories/mobile.jpg">
+      <h2>{{ $category->name }}</h2>
+    </a>
+    <p>
+      {{ $category->description }}
+    </p>
   </div>
-</body>
-
-</html>
+  @endforeach
+@endsection
