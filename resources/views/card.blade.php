@@ -1,18 +1,17 @@
 <div class="col-sm-6 col-md-4 pt-1 d-flex ">
-  <div class="card thumbnail" style="width: 18rem;">
+  <div class="card thumbnail" >
     <img class="card-img-top" src="http://internet-shop.tmweb.ru/storage/products/iphone_x_silver.jpg"
       alt="iPhone X 64GB">
     <div class="card-body">
-      <h3 class="card-text">iPhone X 64GB</h3>
-      <p class="card-text">71990 руб.</p>
+      <h3 class="card-text">{{ $product->name }}</h3>
+      <p class="card-text">{{ $product->price }} руб.</p>
       <p>
-        <a href="{{ route('basket') }}" class="btn btn-primary" role="button">В
-          корзину</a>
-          @isset($category)
-          {{ $category->name }}
-          @endisset
-        <a href="http://laravel-diplom-1.rdavydov.ru/mobiles/iphone_x_64" class="btn btn-default"
-          role="button">Подробнее</a>
+        <form action="{{ route('basket-add', $product) }}" method="POST">
+          <button type="submit" class="btn btn-primary" role="button">В корзину</button>
+          <a href="{{ route('product', [$product->category->code, $product->code]) }}" class="btn btn-secondary"
+            role="button">Подробнее</a>
+          @csrf
+        </form>
       </p>
     </div>
   </div>
