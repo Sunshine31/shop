@@ -16,5 +16,9 @@ div.thumbnail img {
     margin: 0 auto;
 }
 
+div.form-inline form {
+  display: inline;
+}
+
 
 
